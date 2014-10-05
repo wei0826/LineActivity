@@ -16,11 +16,11 @@ How To use
         LineActivity *lineActivity = [LineActivity new];
         NSArray *applicationActivities = @[lineActivity];
 
-        activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[[self.listData objectAtIndex:shareSelectID] valueForKey:@"fb_message"]] applicationActivities:applicationActivities];
+        activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[@"message"] applicationActivities:applicationActivities];
     }
     else
     {
-        activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[[self.listData objectAtIndex:shareSelectID] valueForKey:@"fb_message"]] applicationActivities:nil];
+        activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[@"message"] applicationActivities:nil];
     }
 
     [activityVC setCompletionHandler:^(NSString *activityType, BOOL completed)
