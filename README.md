@@ -1,35 +1,37 @@
 LineActivity
 ============
-LineActivity is an iOS 6/7/8 UIActivity subclass for LINE.
+LineActivity is an iOS 6/7/8 UIActivity subclass for Line App.
 
 
 
 How To use
 ==========
 
-#import "UIActivity+LineActivity.h"
+``` objective-c
+    #import "UIActivity+LineActivity.h"
 
-UIActivityViewController *activityVC = nil;
-if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"line://"]])
-{
-    LineActivity *lineActivity = [LineActivity new];
-    NSArray *applicationActivities = @[lineActivity];
-        
-    activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[[self.listData objectAtIndex:shareSelectID] valueForKey:@"fb_message"]] applicationActivities:applicationActivities];
-}
-else
-{
-    activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[[self.listData objectAtIndex:shareSelectID] valueForKey:@"fb_message"]] applicationActivities:nil];
-}
+    UIActivityViewController *activityVC = nil;
+    if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"line://"]])
+    {
+        LineActivity *lineActivity = [LineActivity new];
+        NSArray *applicationActivities = @[lineActivity];
 
-[activityVC setCompletionHandler:^(NSString *activityType, BOOL completed)
-{
-    NSLog(@"share completed");
-}];
+        activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[[self.listData objectAtIndex:shareSelectID] valueForKey:@"fb_message"]] applicationActivities:applicationActivities];
+    }
+    else
+    {
+        activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[[[self.listData objectAtIndex:shareSelectID] valueForKey:@"fb_message"]] applicationActivities:nil];
+    }
+
+    [activityVC setCompletionHandler:^(NSString *activityType, BOOL completed)
+    {
+        NSLog(@"share completed");
+    }];
     
-[self presentViewController:activityVC animated:YES completion:^{
-    nil;
-}];
+    [self presentViewController:activityVC animated:YES completion:^{
+        nil;
+    }];
+```
 
 
 
